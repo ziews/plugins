@@ -22,15 +22,51 @@ ziew plugin add https://example.com/my-plugin
 
 | Plugin | Description | Status |
 |--------|-------------|--------|
-| [lua](./lua) | LuaJIT scripting for backend logic | Planned |
+| [lua](./lua) | LuaJIT scripting for backend logic | Ready |
 | [sqlite](./sqlite) | SQLite database bindings | Planned |
 
 ### AI Plugins
 
 | Plugin | Description | Status |
 |--------|-------------|--------|
-| [llama](./llama) | Local LLM inference via llama.cpp | Planned |
+| [llama](./llama) | Local LLM inference via llama.cpp | Ready |
 | [whisper](./whisper) | Speech-to-text via whisper.cpp | Planned |
+
+## Quick Start
+
+### Lua Plugin
+
+```bash
+# Install LuaJIT (Ubuntu/Debian)
+sudo apt install libluajit-5.1-dev
+
+# Build with Lua support
+zig build -Dlua=true
+```
+
+```javascript
+// Call Lua functions from JavaScript
+const result = await ziew.lua.call('greet', 'World');
+// Returns: "Hello, World!"
+```
+
+### Llama Plugin (AI)
+
+```bash
+# Install llama.cpp
+git clone https://github.com/ggerganov/llama.cpp
+cd llama.cpp && cmake -B build && cmake --build build && sudo cmake --install build
+
+# Build with AI support
+zig build -Dai=true
+```
+
+```javascript
+// Stream AI responses
+for await (const token of ziew.ai.stream('Once upon a time')) {
+  output.textContent += token;
+}
+```
 
 ## Style Presets
 
@@ -64,7 +100,7 @@ my-plugin/
   "description": "What this plugin does",
   "status": "stable|beta|planned",
   "requires": {
-    "ziew": ">=0.3.0"
+    "ziew": ">=0.2.0"
   }
 }
 ```
@@ -85,6 +121,12 @@ Create your own plugin repo with a `plugin.json` at the root:
 # Users install with:
 ziew plugin add yourusername/your-plugin
 ```
+
+## Links
+
+- **Main repo:** [github.com/ziews/ziew](https://github.com/ziews/ziew)
+- **Website:** [ziew.sh](https://ziew.sh)
+- **Docs:** [ziew.sh/docs](https://ziew.sh/docs)
 
 ## License
 
