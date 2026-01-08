@@ -1,0 +1,16 @@
+{
+  "name": "lua",
+  "version": "0.1.0",
+  "type": "native",
+  "description": "LuaJIT scripting for backend logic",
+  "homepage": "https://luajit.org",
+  "status": "planned",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "Run Lua scripts from JS via ziew.lua.call()",
+    "Access ziew APIs from Lua",
+    "Hot-reload Lua files in dev mode"
+  ]
+}

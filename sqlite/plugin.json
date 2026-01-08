@@ -1,0 +1,17 @@
+{
+  "name": "sqlite",
+  "version": "0.1.0",
+  "type": "native",
+  "description": "SQLite database bindings",
+  "homepage": "https://sqlite.org",
+  "status": "planned",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "Embedded SQLite database",
+    "Async queries via ziew.db.query()",
+    "Prepared statements",
+    "Transaction support"
+  ]
+}

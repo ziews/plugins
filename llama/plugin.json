@@ -1,0 +1,24 @@
+{
+  "name": "llama",
+  "version": "0.1.0",
+  "type": "ai",
+  "description": "Local LLM inference via llama.cpp",
+  "homepage": "https://github.com/ggerganov/llama.cpp",
+  "status": "planned",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "Text generation via ziew.ai.complete()",
+    "Streaming tokens",
+    "Embeddings via ziew.ai.embed()",
+    "Shared model storage (~/.ziew/models/)"
+  ],
+  "models": {
+    "storage": "~/.ziew/models/",
+    "recommended": [
+      "llama-3.2-1b-q4.gguf",
+      "phi-3-mini-q4.gguf"
+    ]
+  }
+}
