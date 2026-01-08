@@ -1,0 +1,24 @@
+{
+  "name": "piper",
+  "version": "0.1.0",
+  "type": "ai",
+  "description": "Local text-to-speech via Piper",
+  "homepage": "https://github.com/rhasspy/piper",
+  "status": "planned",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "Text-to-speech via ziew.ai.speak()",
+    "Multiple voice models",
+    "Fast local inference",
+    "Shared voice storage (~/.ziew/voices/)"
+  ],
+  "voices": {
+    "storage": "~/.ziew/voices/",
+    "recommended": [
+      "en_US-lessac-medium",
+      "en_GB-alan-medium"
+    ]
+  }
+}

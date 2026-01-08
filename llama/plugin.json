@@ -4,9 +4,9 @@
   "type": "ai",
   "description": "Local LLM inference via llama.cpp",
   "homepage": "https://github.com/ggerganov/llama.cpp",
-  "status": "planned",
+  "status": "stable",
   "requires": {
-    "ziew": ">=0.3.0"
+    "ziew": ">=0.2.0"
   },
   "features": [
     "Text generation via ziew.ai.complete()",

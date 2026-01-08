@@ -31,6 +31,7 @@ ziew plugin add https://example.com/my-plugin
 |--------|-------------|--------|
 | [llama](./llama) | Local LLM inference via llama.cpp | Ready |
 | [whisper](./whisper) | Speech-to-text via whisper.cpp | Planned |
+| [piper](./piper) | Text-to-speech via Piper | Planned |
 
 ## Quick Start
 
