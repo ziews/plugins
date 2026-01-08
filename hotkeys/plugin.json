@@ -1,0 +1,18 @@
+{
+  "name": "hotkeys",
+  "version": "0.1.0",
+  "type": "native",
+  "description": "Global keyboard shortcuts",
+  "status": "stable",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "dependencies": {
+    "linux": "libx11-dev"
+  },
+  "features": [
+    "Global hotkey registration",
+    "Modifier key support",
+    "Background shortcut handling"
+  ]
+}

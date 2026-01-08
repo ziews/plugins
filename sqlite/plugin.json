@@ -4,13 +4,15 @@
   "type": "native",
   "description": "SQLite database bindings",
   "homepage": "https://sqlite.org",
-  "status": "planned",
+  "status": "stable",
   "requires": {
     "ziew": ">=0.3.0"
   },
+  "dependencies": {
+    "linux": "libsqlite3-dev"
+  },
   "features": [
     "Embedded SQLite database",
-    "Async queries via ziew.db.query()",
     "Prepared statements",
     "Transaction support"
   ]

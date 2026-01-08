@@ -4,7 +4,7 @@
   "type": "ai",
   "description": "Speech-to-text via whisper.cpp",
   "homepage": "https://github.com/ggerganov/whisper.cpp",
-  "status": "planned",
+  "status": "stable",
   "requires": {
     "ziew": ">=0.3.0"
   },

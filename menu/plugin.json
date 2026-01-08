@@ -1,0 +1,16 @@
+{
+  "name": "menu",
+  "version": "0.1.0",
+  "type": "native",
+  "description": "Native application menus",
+  "status": "stable",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "Native menu bar",
+    "Context menus",
+    "Keyboard shortcuts",
+    "Submenus and separators"
+  ]
+}

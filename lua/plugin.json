@@ -4,7 +4,7 @@
   "type": "native",
   "description": "LuaJIT scripting for backend logic",
   "homepage": "https://luajit.org",
-  "status": "planned",
+  "status": "stable",
   "requires": {
     "ziew": ">=0.3.0"
   },

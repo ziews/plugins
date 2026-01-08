@@ -5,80 +5,82 @@ Official plugin repository for [Ziew](https://ziew.sh).
 ## Installation
 
 ```bash
-# Official plugins (short name)
-ziew plugin add lua
-ziew plugin add llama
+# Add plugins to your project
+ziew plugin add sqlite notify steamworks
 
-# Third-party plugins (user/repo)
-ziew plugin add someuser/cool-plugin
-
-# Direct URL
-ziew plugin add https://example.com/my-plugin
+# List available plugins
+ziew plugin list
 ```
 
 ## Available Plugins
 
-### Native Plugins
+### Core Plugins
 
-| Plugin | Description | Status |
-|--------|-------------|--------|
-| [lua](./lua) | LuaJIT scripting for backend logic | Ready |
-| [sqlite](./sqlite) | SQLite database bindings | Planned |
+| Plugin | Description | Dependencies |
+|--------|-------------|--------------|
+| [sqlite](./sqlite) | SQLite database | libsqlite3-dev |
+| [notify](./notify) | System notifications | libnotify-dev |
+| [keychain](./keychain) | Secure credential storage | libsecret-1-dev |
+| [lua](./lua) | LuaJIT scripting | libluajit-5.1-dev |
+| [tray](./tray) | System tray icon | - |
+| [menu](./menu) | Native application menus | - |
+| [single_instance](./single_instance) | Single app instance | - |
+
+### Input Plugins
+
+| Plugin | Description | Dependencies |
+|--------|-------------|--------------|
+| [hotkeys](./hotkeys) | Global keyboard shortcuts | libx11-dev |
+| [gamepad](./gamepad) | Game controller input | - |
+| [serial](./serial) | Serial port communication | - |
 
 ### AI Plugins
 
-| Plugin | Description | Status |
-|--------|-------------|--------|
-| [llama](./llama) | Local LLM inference via llama.cpp | Ready |
-| [whisper](./whisper) | Speech-to-text via whisper.cpp | Planned |
-| [piper](./piper) | Text-to-speech via Piper | Planned |
+| Plugin | Description | Dependencies |
+|--------|-------------|--------------|
+| [llama](./llama) | Local LLM via llama.cpp | llama.cpp |
+| [whisper](./whisper) | Speech-to-text | whisper.cpp |
+| [piper](./piper) | Text-to-speech | Piper CLI |
 
-## Quick Start
+### Platform Plugins
 
-### Lua Plugin
+| Plugin | Description | Dependencies |
+|--------|-------------|--------------|
+| [steamworks](./steamworks) | Steam integration | Steamworks SDK |
 
-```bash
-# Install LuaJIT (Ubuntu/Debian)
-sudo apt install libluajit-5.1-dev
+## Usage Examples
 
-# Build with Lua support
-zig build -Dlua=true
+### SQLite
+
+```zig
+const sqlite = @import("ziew").plugins.sqlite;
+
+var db = try sqlite.open("app.db");
+defer db.close();
+
+try db.exec("CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT)");
 ```
 
-```javascript
-// Call Lua functions from JavaScript
-const result = await ziew.lua.call('greet', 'World');
-// Returns: "Hello, World!"
+### Steamworks
+
+```zig
+const steam = @import("ziew").plugins.steamworks;
+
+try steam.init();
+defer steam.deinit();
+
+try steam.Achievements.unlock("FIRST_WIN");
+const name = steam.User.getPersonaName();
 ```
 
-### Llama Plugin (AI)
+### Notifications
 
-```bash
-# Install llama.cpp
-git clone https://github.com/ggerganov/llama.cpp
-cd llama.cpp && cmake -B build && cmake --build build && sudo cmake --install build
+```zig
+const notify = @import("ziew").plugins.notify;
 
-# Build with AI support
-zig build -Dai=true
+try notify.init("MyApp");
+try notify.sendSimple("Hello", "World!");
 ```
-
-```javascript
-// Stream AI responses
-for await (const token of ziew.ai.stream('Once upon a time')) {
-  output.textContent += token;
-}
-```
-
-## Style Presets
-
-CSS frameworks are **not plugins** - they're built into the CLI:
-
-```bash
-ziew init myapp --style=pico
-ziew init myapp --style=tailwind
-```
-
-Available styles: `pico`, `water`, `simple`, `mvp`, `tailwind`
 
 ## Creating Plugins
 
@@ -87,8 +89,8 @@ Each plugin is a directory containing:
 ```
 my-plugin/
 ├── plugin.json    # Required: metadata
-├── README.md      # Documentation
-└── src/           # Zig source files
+├── my-plugin.zig  # Zig source
+└── README.md      # Documentation
 ```
 
 ### plugin.json
@@ -96,27 +98,22 @@ my-plugin/
 ```json
 {
   "name": "my-plugin",
-  "version": "1.0.0",
-  "type": "native|ai|tool",
+  "version": "0.1.0",
+  "type": "native",
   "description": "What this plugin does",
-  "status": "stable|beta|planned",
+  "status": "stable",
   "requires": {
-    "ziew": ">=0.2.0"
+    "ziew": ">=0.3.0"
+  },
+  "dependencies": {
+    "linux": "libfoo-dev"
   }
 }
 ```
 
-### Plugin Types
-
-| Type | Purpose | Examples |
-|------|---------|----------|
-| `native` | Zig bindings to C libs | lua, sqlite |
-| `ai` | AI model integrations | llama, whisper |
-| `tool` | CLI extensions | bundler, hot-reload |
-
 ## Third-Party Plugins
 
-Create your own plugin repo with a `plugin.json` at the root:
+Create your own plugin repo:
 
 ```bash
 # Users install with:

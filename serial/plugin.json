@@ -1,0 +1,16 @@
+{
+  "name": "serial",
+  "version": "0.1.0",
+  "type": "native",
+  "description": "Serial port communication",
+  "status": "stable",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "Serial port enumeration",
+    "Read/write data",
+    "Configurable baud rate",
+    "Arduino/microcontroller support"
+  ]
+}

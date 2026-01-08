@@ -1,0 +1,16 @@
+{
+  "name": "tray",
+  "version": "0.1.0",
+  "type": "native",
+  "description": "System tray icon",
+  "status": "stable",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "System tray icon",
+    "Tray menu",
+    "Click handling",
+    "Icon customization"
+  ]
+}

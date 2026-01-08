@@ -1,0 +1,16 @@
+{
+  "name": "gamepad",
+  "version": "0.1.0",
+  "type": "native",
+  "description": "Game controller input",
+  "status": "stable",
+  "requires": {
+    "ziew": ">=0.3.0"
+  },
+  "features": [
+    "Controller detection",
+    "Button and axis input",
+    "Multiple controller support",
+    "Rumble/vibration"
+  ]
+}
