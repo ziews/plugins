@@ -39,7 +39,6 @@ ziew plugin list
 | Plugin | Description | Dependencies |
 |--------|-------------|--------------|
 | [llama](./llama) | Local LLM via llama.cpp | llama.cpp |
-| [whisper](./whisper) | Speech-to-text | whisper.cpp |
 | [piper](./piper) | Text-to-speech | Piper CLI |
 
 ### Platform Plugins
